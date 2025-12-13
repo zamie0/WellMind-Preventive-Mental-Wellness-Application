@@ -1,73 +1,120 @@
-# Welcome to your Lovable project
+# 🌿 WellMind – Preventive Mental Health Mobile Application
 
-## Project info
+## Project Overview
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**WellMind** is a technology-driven mental wellness application focused on **depression and anxiety prevention**. The app empowers users to monitor emotional patterns, build healthy coping habits, and access timely support through AI-powered insights, mindfulness tools, and anonymous community features.
 
-## How can I edit this code?
+WellMind is designed as a **preventive and supportive platform**, not a replacement for professional diagnosis or therapy. It promotes early awareness, emotional resilience, and psychological safety for students, working adults, and caregivers.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## Key Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+* 🧠 **Daily Mood Tracking**
+  Log emotions, triggers, and physical symptoms to identify patterns over time.
 
-Changes made via Lovable will be committed automatically to this repo.
+* 🤖 **AI Emotional Insights & Chat Companion (MindBuddy)**
+  Provides supportive conversations, coping strategies, and personalized wellness suggestions.
 
-**Use your preferred IDE**
+* 📊 **Self-Assessment Tools**
+  Simplified depression, anxiety, stress, and burnout screenings with progress tracking.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+* 🧘 **Mindfulness & Calm Tools**
+  Breathing exercises, grounding techniques, affirmations, and relaxation audio.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+* 🚨 **Panic Support Button**
+  Instant calming mode for anxiety or emotional overload with guided breathing and grounding.
 
-Follow these steps:
+* 👥 **Anonymous Community Support**
+  Safe, moderated peer interaction without revealing personal identity.
+
+* 🎮 **Gamification & Engagement**
+  Streaks, badges, Calm Coins, and a virtual companion to encourage healthy habits.
+
+* 🔐 **Privacy & Security First**
+  Anonymous mode, encrypted data storage, and user-controlled privacy settings.
+
+---
+
+## Target Users
+
+* University & college students
+* Working adults experiencing stress or burnout
+* Caregivers managing emotional strain
+* Individuals seeking early mental health support
+
+---
+
+## Project Objectives
+
+* Promote early detection of depression and anxiety risks
+* Encourage positive mental health behaviors
+* Reduce stigma through accessible digital support
+* Provide a scalable, sustainable mental wellness solution
+
+---
+
+## Technology Stack
+
+This project is built using:
+
+* **Vite**
+* **TypeScript**
+* **React**
+* **Tailwind CSS**
+* **shadcn/ui**
+
+---
+
+## Getting Started (Local Development)
+
+### Prerequisites
+
+* Node.js
+* npm (or yarn)
+
+### Installation & Setup
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Step 1: Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Step 2: Navigate to the project directory
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Step 3: Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 4: Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:5173` (or the port shown in your terminal).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## Project Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+* `/src` – Application source code
+* `/components` – Reusable UI components
+* `/pages` – Main application views
+* `/hooks` – Custom React hooks
+* `/assets` – Images and static resources
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## Ethical Disclaimer
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+WellMind is intended for **mental health awareness, prevention, and emotional support**.
+It does **not** provide medical diagnosis or replace professional mental health care.
+Users experiencing severe distress are encouraged to seek professional help.
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## License
 
-## Can I connect a custom domain to my Lovable project?
+This project is developed by the project team, led by Hazami, for **academic and educational purposes** under  
+**SSE3200 – Entrepreneurship in Computing (Semester I 2025/26)**.
 
-Yes, you can!
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
