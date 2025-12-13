@@ -1,0 +1,2 @@
+com.zami.wellmind.test:style/WhiteBackgroundTheme = 0x7f010001
+com.zami.wellmind.test:style/WhiteBackgroundDialogTheme = 0x7f010000
