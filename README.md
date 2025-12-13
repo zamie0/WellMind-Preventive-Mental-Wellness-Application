@@ -113,7 +113,7 @@ Users experiencing severe distress are encouraged to seek professional help.
 
 ## License
 
-This project is developed by the project team, led by Hazami, for **academic and educational purposes** under  
+This project is developed by Hazami, for **academic and educational purposes** under  
 **SSE3200 – Entrepreneurship in Computing (Semester I 2025/26)**.
 
 
