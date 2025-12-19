@@ -15,6 +15,7 @@ const badgeData: Record<BadgeId, BadgeInfo> = {
   streak_30: { name: 'Monthly Master', description: 'Maintain a 30-day streak', icon: '🏆' },
   breathing_master: { name: 'Breath Master', description: 'Complete 10 breathing exercises', icon: '🌬️' },
   journal_starter: { name: 'Journal Starter', description: 'Write your first journal entry', icon: '📝' },
+  journal_master: { name: 'Journal Master', description: 'Write 10 journal entries', icon: '📖' },
   mood_tracker: { name: 'Mood Tracker', description: 'Log 10 mood entries', icon: '📊' },
   calm_explorer: { name: 'Calm Explorer', description: 'Try all mindfulness exercises', icon: '🧘' },
   pet_lover: { name: 'Pet Lover', description: 'Get your pet to maximum happiness', icon: '💕' },

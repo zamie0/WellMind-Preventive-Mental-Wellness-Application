@@ -14,35 +14,63 @@ import {
   Calendar,
   Sparkles,
   LogOut,
-  KeyRound
+  KeyRound,
+  Users
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useState } from 'react';
 import PinSetup from '@/components/wellmind/PinSetup';
+import PeerSupportChat from '@/components/wellmind/PeerSupportChat';
+import NotificationsSettings from '@/components/wellmind/NotificationsSettings';
+import PrivacySettings from '@/components/wellmind/PrivacySettings';
+import CrisisSupport from '@/components/wellmind/CrisisSupport';
+import HelpFAQ from '@/components/wellmind/HelpFAQ';
+
+type ActiveScreen = 'main' | 'pin' | 'peer-chat' | 'notifications' | 'privacy' | 'crisis' | 'help';
 
 export const Profile = () => {
   const user = useWellMindStore((state) => state.user);
   const currentStreak = useWellMindStore((state) => state.currentStreak);
   const moodEntries = useWellMindStore((state) => state.moodEntries);
-  const { logout, hasPin, getCurrentUser } = useAuthStore();
-  const [showPinSetup, setShowPinSetup] = useState(false);
-  const authUser = getCurrentUser();
+  const { logout, hasPin } = useAuthStore();
+  const [activeScreen, setActiveScreen] = useState<ActiveScreen>('main');
 
   const handleLogout = () => {
     logout();
     toast.success('Logged out successfully');
   };
 
-  if (showPinSetup) {
+  // Render sub-screens
+  if (activeScreen === 'pin') {
     return (
       <PinSetup 
         onComplete={() => {
-          setShowPinSetup(false);
+          setActiveScreen('main');
           toast.success('PIN updated successfully!');
         }}
-        onSkip={() => setShowPinSetup(false)}
+        onSkip={() => setActiveScreen('main')}
       />
     );
+  }
+
+  if (activeScreen === 'peer-chat') {
+    return <PeerSupportChat onClose={() => setActiveScreen('main')} />;
+  }
+
+  if (activeScreen === 'notifications') {
+    return <NotificationsSettings onClose={() => setActiveScreen('main')} />;
+  }
+
+  if (activeScreen === 'privacy') {
+    return <PrivacySettings onClose={() => setActiveScreen('main')} />;
+  }
+
+  if (activeScreen === 'crisis') {
+    return <CrisisSupport onClose={() => setActiveScreen('main')} />;
+  }
+
+  if (activeScreen === 'help') {
+    return <HelpFAQ onClose={() => setActiveScreen('main')} />;
   }
 
   const menuItems = [
@@ -51,41 +79,44 @@ export const Profile = () => {
       label: hasPin() ? 'Change PIN' : 'Set Up PIN',
       description: hasPin() ? 'Update your quick access PIN' : 'Enable quick PIN login',
       color: 'bg-sage-light text-sage',
-      action: () => setShowPinSetup(true),
+      screen: 'pin' as ActiveScreen,
+    },
+    {
+      icon: <Users className="h-5 w-5" />,
+      label: 'Peer Support Chat',
+      description: 'Connect with peer supporters',
+      color: 'bg-coral-light text-coral',
+      screen: 'peer-chat' as ActiveScreen,
     },
     {
       icon: <Bell className="h-5 w-5" />,
       label: 'Notifications',
       description: 'Manage your reminders',
-      color: 'bg-coral-light text-coral',
+      color: 'bg-honey-light text-honey',
+      screen: 'notifications' as ActiveScreen,
     },
     {
       icon: <Shield className="h-5 w-5" />,
       label: 'Privacy',
       description: 'Data and security settings',
-      color: 'bg-sage-light text-sage',
+      color: 'bg-sky-light text-sky',
+      screen: 'privacy' as ActiveScreen,
     },
     {
       icon: <Heart className="h-5 w-5" />,
       label: 'Crisis Support',
       description: 'Emergency resources',
       color: 'bg-destructive/10 text-destructive',
+      screen: 'crisis' as ActiveScreen,
     },
     {
       icon: <HelpCircle className="h-5 w-5" />,
       label: 'Help & FAQ',
       description: 'Get support and answers',
-      color: 'bg-sky-light text-sky',
+      color: 'bg-lavender-light text-lavender',
+      screen: 'help' as ActiveScreen,
     },
   ];
-
-  const handleMenuClick = (item: typeof menuItems[0]) => {
-    if (item.action) {
-      item.action();
-    } else {
-      toast.info(`${item.label} settings coming soon!`);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-background pb-24">
@@ -196,7 +227,7 @@ export const Profile = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 + index * 0.1 }}
-              onClick={() => handleMenuClick(item)}
+              onClick={() => setActiveScreen(item.screen)}
               className="w-full bg-card rounded-2xl p-4 shadow-soft flex items-center gap-4 hover:shadow-card transition-all"
             >
               <div className={`w-12 h-12 rounded-xl ${item.color} flex items-center justify-center`}>

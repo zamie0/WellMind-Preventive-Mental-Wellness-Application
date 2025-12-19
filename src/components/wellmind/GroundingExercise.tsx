@@ -80,7 +80,7 @@ export const GroundingExercise = ({ onClose }: GroundingExerciseProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex flex-col"
+      className="fixed inset-0 z-50 bg-background flex flex-col"
     >
       {/* Header */}
       <div className="flex items-center justify-between p-4">

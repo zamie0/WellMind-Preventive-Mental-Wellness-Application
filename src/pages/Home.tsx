@@ -7,16 +7,21 @@ import { DailyAffirmation } from '@/components/wellmind/DailyAffirmation';
 import { MoodChart } from '@/components/wellmind/MoodChart';
 import { QuickActions } from '@/components/wellmind/QuickActions';
 import { BreathingExercise } from '@/components/wellmind/BreathingExercise';
+import { JournalEntry } from '@/components/wellmind/JournalEntry';
 import { BottomNav } from '@/components/wellmind/BottomNav';
 import { PanicButton } from '@/components/wellmind/PanicButton';
 import { MoodPrediction } from '@/components/wellmind/MoodPrediction';
+import { ActivitySuggestion } from '@/components/wellmind/ActivitySuggestion';
 import { useWellMindStore } from '@/stores/wellmindStore';
 import { Flame, Plus } from 'lucide-react';
 import { toast } from 'sonner';
+import { Target, CheckCircle2, HeartHandshake } from 'lucide-react';
+
 
 export const Home = () => {
   const [showMoodSelector, setShowMoodSelector] = useState(false);
   const [showBreathing, setShowBreathing] = useState(false);
+  const [showJournal, setShowJournal] = useState(false);
   const navigate = useNavigate();
   
   const user = useWellMindStore((state) => state.user);
@@ -42,9 +47,7 @@ export const Home = () => {
   };
 
   const handleJournalClick = () => {
-    toast.info('Journal feature coming soon!', {
-      description: 'We\'re working on this feature.',
-    });
+    setShowJournal(true);
   };
 
   const handleChatClick = () => {
@@ -155,6 +158,11 @@ export const Home = () => {
           <DailyAffirmation />
         </section>
 
+        {/* Activity Suggestion */}
+        <section>
+          <ActivitySuggestion />
+        </section>
+
         {/* Mood Prediction */}
         <section>
           <MoodPrediction />
@@ -163,6 +171,140 @@ export const Home = () => {
         {/* Mood Chart */}
         <section>
           <MoodChart />
+        </section>
+
+        {/* Healing Goals */}
+        <section>
+          <h2 className="text-lg font-semibold text-foreground mb-1">
+            Healing Goals
+          </h2>
+          <p className="text-sm text-muted-foreground mb-4">
+            Gentle steps to support your healing today 🌱
+          </p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-card rounded-2xl p-4 shadow-soft space-y-3"
+          >
+            {/* Goal */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-sage-light flex items-center justify-center">
+                  🌬️
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">
+                    Breathe Slowly
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    2 minutes of calm breathing
+                  </p>
+                </div>
+              </div>
+              <CheckCircle2 className="h-5 w-5 text-muted-foreground" />
+            </div>
+
+            {/* Goal */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-sky-light flex items-center justify-center">
+                  ✍️
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">
+                    Express One Thought
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Write or note how you feel
+                  </p>
+                </div>
+              </div>
+              <span className="text-sm text-muted-foreground">Optional</span>
+            </div>
+
+            {/* Goal */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-coral-light flex items-center justify-center">
+                  💬
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">
+                    Reach Out
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Message someone you trust
+                  </p>
+                </div>
+              </div>
+              <span className="text-sm text-muted-foreground">Any time</span>
+            </div>
+
+            {/* Gentle Reminder */}
+            <div className="mt-3 p-3 rounded-xl bg-muted/40 text-sm text-muted-foreground flex items-center gap-2">
+              <HeartHandshake className="h-4 w-4 text-coral" />
+              Healing is not a race. Doing one small thing is enough.
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Goals Section */}
+        <section>
+          <h2 className="text-lg font-semibold text-foreground mb-4">Your Goals</h2>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-card rounded-2xl p-4 shadow-soft space-y-3"
+          >
+            {/* Goal Item */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-sage-light flex items-center justify-center">
+                  <Target className="h-5 w-5 text-sage" />
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">Daily Check-in</p>
+                  <p className="text-sm text-muted-foreground">
+                    Track your mood today
+                  </p>
+                </div>
+              </div>
+
+              <CheckCircle2 className="h-6 w-6 text-primary" />
+            </div>
+
+            {/* Goal Item */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-sky-light flex items-center justify-center">
+                  <Target className="h-5 w-5 text-sky" />
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">Breathe Mindfully</p>
+                  <p className="text-sm text-muted-foreground">
+                    Complete 1 breathing exercise
+                  </p>
+                </div>
+              </div>
+
+              <span className="text-sm text-muted-foreground">0 / 1</span>
+            </div>
+
+            {/* CTA */}
+            <Button
+              variant="outline"
+              className="w-full mt-2"
+              onClick={() =>
+                toast.info('Goals feature coming soon!', {
+                  description: 'You’ll be able to customize and track goals.',
+                })
+              }
+            >
+              View All Goals
+            </Button>
+          </motion.div>
         </section>
       </main>
 
@@ -203,6 +345,13 @@ export const Home = () => {
       <AnimatePresence>
         {showBreathing && (
           <BreathingExercise onClose={() => setShowBreathing(false)} />
+        )}
+      </AnimatePresence>
+
+      {/* Journal Modal */}
+      <AnimatePresence>
+        {showJournal && (
+          <JournalEntry onClose={() => setShowJournal(false)} />
         )}
       </AnimatePresence>
     </div>

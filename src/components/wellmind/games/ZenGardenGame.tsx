@@ -130,7 +130,7 @@ export const ZenGardenGame = ({ onClose, onComplete }: ZenGardenGameProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-gradient-to-b from-sage/30 to-cream"
+      className="fixed inset-0 z-50 flex flex-col bg-background"
     >
       {/* Header */}
       <div className="flex items-center justify-between p-4">

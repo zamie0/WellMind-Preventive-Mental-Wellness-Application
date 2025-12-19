@@ -96,7 +96,7 @@ export const BreathingExercise = ({ onClose }: BreathingExerciseProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-background"
     >
       <div className="w-full max-w-md p-6">
         <div className="flex justify-between items-center mb-8">

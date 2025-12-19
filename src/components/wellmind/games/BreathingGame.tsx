@@ -77,7 +77,7 @@ export const BreathingGame = ({ onClose, onComplete }: BreathingGameProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className={`fixed inset-0 z-50 bg-gradient-to-b ${phase.color} transition-colors duration-1000`}
+      className="fixed inset-0 z-50 flex flex-col bg-background"
     >
       {/* Header */}
       <div className="flex items-center justify-between p-4">
@@ -131,14 +131,14 @@ export const BreathingGame = ({ onClose, onComplete }: BreathingGameProps) => {
               key={phase.name}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-8 text-center"
+              className="mt-20 text-center"
             >
               <h3 className="text-2xl font-bold text-foreground mb-2">{phase.name}</h3>
               <p className="text-muted-foreground">{phase.instruction}</p>
             </motion.div>
 
             {/* Progress Dots */}
-            <div className="flex gap-2 mt-8">
+            <div className="flex gap-2 mt-6">
               {Array.from({ length: totalCycles }).map((_, i) => (
                 <div
                   key={i}

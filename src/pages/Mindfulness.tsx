@@ -4,10 +4,14 @@ import { BottomNav } from '@/components/wellmind/BottomNav';
 import { BreathingExercise } from '@/components/wellmind/BreathingExercise';
 import { GroundingExercise } from '@/components/wellmind/GroundingExercise';
 import { SleepMeditation } from '@/components/wellmind/SleepMeditation';
-import { PeerChatButton } from '@/components/wellmind/PeerChatButton';
-import { AIChatDemo } from '@/components/wellmind/AIChatDemo';
+import { BodyScanExercise } from '@/components/wellmind/BodyScanExercise';
+import { ProgressiveMuscleRelaxation } from '@/components/wellmind/ProgressiveMuscleRelaxation';
+import { LovingKindnessMeditation } from '@/components/wellmind/LovingKindnessMeditation';
+import { VisualizationExercise } from '@/components/wellmind/VisualizationExercise';
+import { BoxBreathingExercise } from '@/components/wellmind/BoxBreathingExercise';
+import { GratitudeExercise } from '@/components/wellmind/GratitudeExercise';
 import { Button } from '@/components/ui/button';
-import { Wind, Moon, Sun, Leaf, Play, Clock, MessageCircleHeart } from 'lucide-react';
+import { Wind, Moon, Sun, Leaf, Play, Clock, MessageCircleHeart, Waves, Heart, Sparkles, Square, PenLine } from 'lucide-react';
 import heroMindfulness from '@/assets/hero-mindfulness.png';
 
 const exercises = [
@@ -21,13 +25,31 @@ const exercises = [
     available: true,
   },
   {
+    id: 'box-breathing',
+    icon: <Square className="h-8 w-8" />,
+    title: 'Box Breathing',
+    description: '4-4-4-4 technique used by Navy SEALs for calm under pressure',
+    duration: '3 min',
+    color: 'bg-sky-light text-sky',
+    available: true,
+  },
+  {
     id: 'body-scan',
     icon: <Leaf className="h-8 w-8" />,
     title: 'Body Scan',
     description: 'Release tension by focusing on each part of your body',
     duration: '5 min',
     color: 'bg-sage-light text-sage',
-    available: false,
+    available: true,
+  },
+  {
+    id: 'progressive-muscle',
+    icon: <Waves className="h-8 w-8" />,
+    title: 'Progressive Muscle Relaxation',
+    description: 'Tense and release muscle groups to melt away stress',
+    duration: '5 min',
+    color: 'bg-coral-light text-coral',
+    available: true,
   },
   {
     id: 'grounding',
@@ -47,6 +69,33 @@ const exercises = [
     color: 'bg-lavender-light text-lavender',
     available: true,
   },
+  {
+    id: 'loving-kindness',
+    icon: <Heart className="h-8 w-8" />,
+    title: 'Loving-Kindness',
+    description: 'Send compassion to yourself and others for inner peace',
+    duration: '4 min',
+    color: 'bg-lavender-light text-lavender',
+    available: true,
+  },
+  {
+    id: 'visualization',
+    icon: <Sparkles className="h-8 w-8" />,
+    title: 'Peaceful Visualization',
+    description: 'Journey to a calming beach scene in your mind',
+    duration: '3 min',
+    color: 'bg-primary/10 text-primary',
+    available: true,
+  },
+  {
+    id: 'gratitude',
+    icon: <PenLine className="h-8 w-8" />,
+    title: 'Gratitude Practice',
+    description: 'Reflect on three things you are grateful for today',
+    duration: '3 min',
+    color: 'bg-honey-light text-honey',
+    available: true,
+  },
 ];
 
 const sounds = [
@@ -58,18 +107,46 @@ const sounds = [
 
 export const Mindfulness = () => {
   const [showBreathing, setShowBreathing] = useState(false);
+  const [showBoxBreathing, setShowBoxBreathing] = useState(false);
   const [showGrounding, setShowGrounding] = useState(false);
   const [showSleepMeditation, setShowSleepMeditation] = useState(false);
+  const [showBodyScan, setShowBodyScan] = useState(false);
+  const [showProgressiveMuscle, setShowProgressiveMuscle] = useState(false);
+  const [showLovingKindness, setShowLovingKindness] = useState(false);
+  const [showVisualization, setShowVisualization] = useState(false);
+  const [showGratitude, setShowGratitude] = useState(false);
   const [activeSound, setActiveSound] = useState<string | null>(null);
   const [showAIChat, setShowAIChat] = useState(false);
 
   const handleExerciseClick = (exercise: typeof exercises[0]) => {
-    if (exercise.id === 'breathing') {
-      setShowBreathing(true);
-    } else if (exercise.id === 'grounding') {
-      setShowGrounding(true);
-    } else if (exercise.id === 'sleep') {
-      setShowSleepMeditation(true);
+    switch (exercise.id) {
+      case 'breathing':
+        setShowBreathing(true);
+        break;
+      case 'box-breathing':
+        setShowBoxBreathing(true);
+        break;
+      case 'grounding':
+        setShowGrounding(true);
+        break;
+      case 'sleep':
+        setShowSleepMeditation(true);
+        break;
+      case 'body-scan':
+        setShowBodyScan(true);
+        break;
+      case 'progressive-muscle':
+        setShowProgressiveMuscle(true);
+        break;
+      case 'loving-kindness':
+        setShowLovingKindness(true);
+        break;
+      case 'visualization':
+        setShowVisualization(true);
+        break;
+      case 'gratitude':
+        setShowGratitude(true);
+        break;
     }
   };
 
@@ -139,7 +216,7 @@ export const Mindfulness = () => {
                 key={exercise.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.05 }}
                 className={`bg-card rounded-2xl p-5 shadow-soft ${
                   !exercise.available && 'opacity-60'
                 }`}
@@ -182,60 +259,6 @@ export const Mindfulness = () => {
           </div>
         </section>
 
-        {/* Peer Support Section */}
-        <section>
-          <h2 className="text-lg font-semibold text-foreground mb-4">Connect with Others</h2>
-          <PeerChatButton />
-        </section>
-
-        {/* AI Companion Section */}
-        <section>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-foreground">Talk to MindBuddy</h2>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setShowAIChat(!showAIChat)}
-            >
-              {showAIChat ? 'Hide' : 'Open Chat'}
-            </Button>
-          </div>
-          
-          {!showAIChat ? (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl p-5 border border-primary/20"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center">
-                  <MessageCircleHeart className="w-7 h-7 text-primary" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-foreground">Need someone to talk to?</h3>
-                  <p className="text-sm text-muted-foreground">
-                    MindBuddy is here to listen and support you
-                  </p>
-                </div>
-              </div>
-              <Button
-                className="w-full mt-4"
-                onClick={() => setShowAIChat(true)}
-              >
-                <MessageCircleHeart className="w-4 h-4 mr-2" />
-                Start Chatting
-              </Button>
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-            >
-              <AIChatDemo />
-            </motion.div>
-          )}
-        </section>
-
         {/* Tips */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
@@ -258,11 +281,29 @@ export const Mindfulness = () => {
         {showBreathing && (
           <BreathingExercise onClose={() => setShowBreathing(false)} />
         )}
+        {showBoxBreathing && (
+          <BoxBreathingExercise onClose={() => setShowBoxBreathing(false)} />
+        )}
         {showGrounding && (
           <GroundingExercise onClose={() => setShowGrounding(false)} />
         )}
         {showSleepMeditation && (
           <SleepMeditation onClose={() => setShowSleepMeditation(false)} />
+        )}
+        {showBodyScan && (
+          <BodyScanExercise onClose={() => setShowBodyScan(false)} />
+        )}
+        {showProgressiveMuscle && (
+          <ProgressiveMuscleRelaxation onClose={() => setShowProgressiveMuscle(false)} />
+        )}
+        {showLovingKindness && (
+          <LovingKindnessMeditation onClose={() => setShowLovingKindness(false)} />
+        )}
+        {showVisualization && (
+          <VisualizationExercise onClose={() => setShowVisualization(false)} />
+        )}
+        {showGratitude && (
+          <GratitudeExercise onClose={() => setShowGratitude(false)} />
         )}
       </AnimatePresence>
     </div>

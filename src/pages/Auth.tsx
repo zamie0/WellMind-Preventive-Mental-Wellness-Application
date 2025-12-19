@@ -90,21 +90,11 @@ const Auth = () => {
           animate={{ scale: 1 }}
           transition={{ delay: 0.2 }}
         >
-
           <motion.div
             className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-sage-400 to-sage-500 rounded-3xl shadow-lg mb-4"
             animate={{ rotate: [0, 5, -5, 0] }}
             transition={{ duration: 4, repeat: Infinity }}
           >
-            {/* Image Logo */}
-            <motion.img
-              src="/logo.png"
-              alt="WellMind Logo"
-              className="mx-auto mb-1 w-20 h-20 object-contain"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25 }}
-            />
             <Heart className="w-10 h-10 text-white" fill="currentColor" />
           </motion.div>
           <h1 className="text-3xl font-bold text-sage-800 mb-2">WellMind</h1>

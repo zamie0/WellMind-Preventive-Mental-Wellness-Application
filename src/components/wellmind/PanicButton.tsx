@@ -340,11 +340,11 @@ export const PanicButton = ({ variant = 'fab' }: PanicButtonProps) => {
             {/* Crisis Hotline */}
             <div className="p-6">
               <a
-                href="tel:988"
+                href="tel:999"
                 className="flex items-center justify-center gap-2 p-4 rounded-xl bg-white/10 text-white"
               >
                 <Phone className="w-5 h-5" />
-                <span>Crisis Hotline: 988</span>
+                <span>Crisis Hotline: 999</span>
               </a>
             </div>
           </motion.div>

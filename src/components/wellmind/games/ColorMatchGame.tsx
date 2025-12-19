@@ -82,7 +82,7 @@ export const ColorMatchGame = ({ onClose, onComplete }: ColorMatchGameProps) => 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-gradient-to-b from-lavender/20 to-background"
+      className="fixed inset-0 z-50 flex flex-col bg-background"
     >
       {/* Header */}
       <div className="flex items-center justify-between p-4">
@@ -94,7 +94,7 @@ export const ColorMatchGame = ({ onClose, onComplete }: ColorMatchGameProps) => 
             />
           ))}
         </div>
-        <div className="text-center">
+        <div className="text-center -ml-8">
           <p className="text-2xl font-bold text-foreground">{score}</p>
           <p className="text-xs text-muted-foreground">matches</p>
         </div>
